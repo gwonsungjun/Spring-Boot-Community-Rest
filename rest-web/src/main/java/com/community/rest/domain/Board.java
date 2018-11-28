@@ -1,6 +1,6 @@
-package com.community.rest;
+package com.community.rest.domain;
 
-import com.community.rest.enums.BoardType;
+import com.community.rest.domain.enums.BoardType;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,6 +1,6 @@
 package com.community.rest.controller;
 
-import com.community.rest.Board;
+import com.community.rest.domain.Board;
 import com.community.rest.repository.BoardRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

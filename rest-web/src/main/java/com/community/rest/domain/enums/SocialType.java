@@ -1,4 +1,4 @@
-package com.community.rest.enums;
+package com.community.rest.domain.enums;
 
 public enum SocialType {
     FACEBOOK("facebook"),

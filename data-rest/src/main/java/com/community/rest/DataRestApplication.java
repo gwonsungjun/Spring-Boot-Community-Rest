@@ -1,5 +1,6 @@
 package com.community.rest;
 
+import com.community.rest.event.BoardEventHandler;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -32,11 +33,11 @@ public class DataRestApplication {
         @Bean
         InMemoryUserDetailsManager userDetailsManager() {
             User.UserBuilder commonUser = User.withUsername("commonUser").password("{noop}common").roles("USER");
-            User.UserBuilder sungjun = User.withUsername("sungjun").password("{noop}test").roles("USER", "ADMIN");
+            User.UserBuilder havi = User.withUsername("havi").password("{noop}test").roles("USER", "ADMIN");
 
             List<UserDetails> userDetailsList = new ArrayList<>();
             userDetailsList.add(commonUser.build());
-            userDetailsList.add(sungjun.build());
+            userDetailsList.add(havi.build());
 
             return new InMemoryUserDetailsManager(userDetailsList);
         }
@@ -52,11 +53,15 @@ public class DataRestApplication {
 
             http.httpBasic()
                     .and().authorizeRequests()
-                    //.antMatchers(HttpMethod.POST, "/Boards/**").hasRole("ADMIN")
                     .anyRequest().permitAll()
                     .and().cors().configurationSource(source)
                     .and().csrf().disable();
         }
+    }
+
+    @Bean
+    BoardEventHandler boardEventHandler() {
+        return new BoardEventHandler();
     }
 
 }

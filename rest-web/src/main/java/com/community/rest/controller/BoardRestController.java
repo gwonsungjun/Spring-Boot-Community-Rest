@@ -1,6 +1,6 @@
 package com.community.rest.controller;
 
-import com.community.rest.domain.Board;
+import com.community.rest.Board;
 import com.community.rest.repository.BoardRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -28,8 +28,7 @@ public class BoardRestController {
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> getBoards(@PageableDefault Pageable pageable) {
         Page<Board> boards = boardRepository.findAll(pageable);
-        PageMetadata pageMetadata = new PageMetadata(pageable.getPageSize(),
-                boards.getNumber(), boards.getTotalElements());
+        PageMetadata pageMetadata = new PageMetadata(pageable.getPageSize(), boards.getNumber(), boards.getTotalElements());
         PagedResources<Board> resources = new PagedResources<>(boards.getContent(), pageMetadata);
         resources.add(linkTo(methodOn(BoardRestController.class).getBoards(pageable)).withSelfRel());
         return ResponseEntity.ok(resources);

@@ -1,6 +1,6 @@
-package com.community.rest.domain;
+package com.community.rest;
 
-import com.community.rest.domain.enums.BoardType;
+import com.community.rest.enums.BoardType;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,7 +17,7 @@ public class Board implements Serializable {
 
     @Id
     @Column
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idx;
 
     @Column
